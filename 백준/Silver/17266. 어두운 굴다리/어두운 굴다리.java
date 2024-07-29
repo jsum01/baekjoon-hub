@@ -50,16 +50,17 @@ public class Main {
             boolean flag = true; //
 
             // mid 높이로도 굴다리를 모두 비출 수 있는지 확인
-            int coordinate = 0; // 가로등 위치
+            int lastIlluminated = 0; // 가로등 위치
             for(int i = 0; i < x.length; i++) {
-                if(x[i] - mid <= coordinate) { // i번째 가로등이 높이의 중간값
-                    coordinate = x[i] + mid; //
+                if(x[i] - mid <= lastIlluminated) { // i번째 가로등이 높이의 중간값
+                    lastIlluminated = x[i] + mid; //
                 } else {
-                    flag = false;
+                    flag = false; // 모두 비출 수 없음
                 }
             }
             // 마지막 가로등부터 끝지점도 확인
-            if (N - coordinate > 0) flag = false;
+            if (N - lastIlluminated > 0)
+                flag = false; // 모두 비출 수 없음
             else flag = true;
 
             if (flag) { // 모두를 비출 수 있음
